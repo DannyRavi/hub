@@ -1,5 +1,6 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import ElementWithTooltip from './ElementWithTooltip';
 
@@ -45,7 +46,9 @@ describe('ElementWithTooltip', () => {
     const { getByTestId, getByText, getByRole } = render(<ElementWithTooltip {...defaultProps} />);
 
     const badge = getByTestId('elementWithTooltip');
-    fireEvent.mouseEnter(badge);
+    act(() => {
+      fireEvent.mouseEnter(badge);
+    });
 
     await waitFor(() => {
       expect(getByText(defaultProps.tooltipMessage)).toBeInTheDocument();
@@ -57,7 +60,9 @@ describe('ElementWithTooltip', () => {
     const { getByTestId, getByText, getByRole, queryByRole } = render(<ElementWithTooltip {...defaultProps} />);
 
     const badge = getByTestId('elementWithTooltip');
-    fireEvent.mouseEnter(badge);
+    act(() => {
+      fireEvent.mouseEnter(badge);
+    });
 
     await waitFor(() => {
       expect(getByText(defaultProps.tooltipMessage)).toBeInTheDocument();
@@ -79,7 +84,9 @@ describe('ElementWithTooltip', () => {
     const { getByTestId, queryByRole } = render(<ElementWithTooltip {...props} />);
 
     const badge = getByTestId('elementWithTooltip');
-    fireEvent.mouseEnter(badge);
+    act(() => {
+      fireEvent.mouseEnter(badge);
+    });
 
     waitFor(() => {
       expect(queryByRole('tooltip')).toBeNull();
