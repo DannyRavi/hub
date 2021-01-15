@@ -122,7 +122,7 @@ describe('ActionBtn', () => {
     const btn = getByTestId(defaultProps.testId);
     fireEvent.mouseEnter(btn);
 
-    jest.setTimeout(3000);
+    // await waitFor(() => getByRole('tooltip'), { timeout: 2000 });
 
     await waitFor(() => {
       expect(getByRole('tooltip')).toBeInTheDocument();
