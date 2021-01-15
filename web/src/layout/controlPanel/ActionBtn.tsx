@@ -51,7 +51,7 @@ const ActionBtn = forwardRef((props: Props, ref: React.Ref<RefActionBtn>) => {
         }
       };
     }
-  }, [isAuthorized, onBtnHover, visibleTooltipStatus]);
+  }, [isAuthorized, onBtnHover, props.testId, visibleTooltipStatus]);
 
   useEffect(() => {
     if (activeOrg) {
