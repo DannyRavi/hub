@@ -1,6 +1,5 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 import { AppCtx } from '../../context/AppCtx';
 import { AuthorizerAction, AuthorizerInput } from '../../types';
@@ -121,12 +120,7 @@ describe('ActionBtn', () => {
     );
 
     const btn = getByTestId(defaultProps.testId);
-
-    // act(() => {
     fireEvent.mouseEnter(btn);
-    // });
-
-    // setTimeout(() => {}, 3000);
 
     await waitFor(() => {
       expect(getByRole('tooltip')).toBeInTheDocument();

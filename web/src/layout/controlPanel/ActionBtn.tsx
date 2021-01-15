@@ -32,23 +32,25 @@ const ActionBtn = forwardRef((props: Props, ref: React.Ref<RefActionBtn>) => {
   }));
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    if (!visibleTooltipStatus && onBtnHover) {
-      timeout = setTimeout(() => {
-        setVisibleTooltipStatus(true);
-      }, 2000);
-    }
-    if (visibleTooltipStatus && !onBtnHover) {
-      timeout = setTimeout(() => {
-        setVisibleTooltipStatus(false);
-      }, 50);
-    }
-    return () => {
-      if (!isUndefined(timeout)) {
-        clearTimeout(timeout);
+    if (!isAuthorized) {
+      let timeout: NodeJS.Timeout;
+      if (!visibleTooltipStatus && onBtnHover) {
+        timeout = setTimeout(() => {
+          setVisibleTooltipStatus(true);
+        }, 2000);
       }
-    };
-  }, [onBtnHover, visibleTooltipStatus]);
+      if (visibleTooltipStatus && !onBtnHover) {
+        timeout = setTimeout(() => {
+          setVisibleTooltipStatus(false);
+        }, 50);
+      }
+      return () => {
+        if (!isUndefined(timeout)) {
+          clearTimeout(timeout);
+        }
+      };
+    }
+  }, [isAuthorized, onBtnHover, visibleTooltipStatus]);
 
   useEffect(() => {
     if (activeOrg) {
