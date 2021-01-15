@@ -122,6 +122,8 @@ describe('ActionBtn', () => {
     const btn = getByTestId(defaultProps.testId);
     fireEvent.mouseEnter(btn);
 
+    jest.setTimeout(3000);
+
     await waitFor(() => {
       expect(getByRole('tooltip')).toBeInTheDocument();
       expect(getByText('You are not allowed to perform this action')).toBeInTheDocument();
