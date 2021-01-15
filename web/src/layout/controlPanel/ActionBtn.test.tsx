@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import React from 'react';
 
 import { AppCtx } from '../../context/AppCtx';
@@ -122,11 +122,9 @@ describe('ActionBtn', () => {
     const btn = getByTestId(defaultProps.testId);
     fireEvent.mouseEnter(btn);
 
-    // await waitFor(() => getByRole('tooltip'), { timeout: 2000 });
-
     await waitFor(() => {
       expect(getByRole('tooltip')).toBeInTheDocument();
-      // expect(getByText('You are not allowed to perform this action')).toBeInTheDocument();
+      expect(getByText('You are not allowed to perform this action')).toBeInTheDocument();
     });
   });
 });
