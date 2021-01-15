@@ -32,7 +32,7 @@ const ActionBtn = forwardRef((props: Props, ref: React.Ref<RefActionBtn>) => {
   }));
 
   useEffect(() => {
-    console.log('test4', props.testId, isAuthorized, visibleTooltipStatus);
+    // console.log('test4', props.testId, isAuthorized, visibleTooltipStatus);
     // if (!isAuthorized) {
     let timeout: NodeJS.Timeout;
     if (!visibleTooltipStatus && onBtnHover) {
@@ -51,7 +51,7 @@ const ActionBtn = forwardRef((props: Props, ref: React.Ref<RefActionBtn>) => {
       }
     };
     // }
-  }, [isAuthorized, onBtnHover, props.testId, visibleTooltipStatus]);
+  }, [onBtnHover, visibleTooltipStatus]);
 
   useEffect(() => {
     if (activeOrg) {
