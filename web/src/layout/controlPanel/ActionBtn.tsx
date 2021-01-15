@@ -32,6 +32,7 @@ const ActionBtn = forwardRef((props: Props, ref: React.Ref<RefActionBtn>) => {
   }));
 
   useEffect(() => {
+    console.log(props.testId, isAuthorized, visibleTooltipStatus);
     if (!isAuthorized) {
       let timeout: NodeJS.Timeout;
       if (!visibleTooltipStatus && onBtnHover) {
