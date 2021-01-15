@@ -122,9 +122,11 @@ describe('ActionBtn', () => {
 
     const btn = getByTestId(defaultProps.testId);
 
-    act(() => {
-      fireEvent.mouseEnter(btn);
-    });
+    // act(() => {
+    fireEvent.mouseEnter(btn);
+    // });
+
+    // setTimeout(() => {}, 3000);
 
     await waitFor(() => {
       expect(getByRole('tooltip')).toBeInTheDocument();
